@@ -12,7 +12,7 @@
                 <input type="text" name="uid" placeholder="Username...">
                 <input type="password" name="pwd" placeholder="Password...">
                 <input type="password" name="pwdRepeat" placeholder="Password...">
-                <!-- <input type="password" name="pwdRepeat" placeholder="Confirm Password..."> -->
+            
                 <button type="submit" name="submit">Sign Up</button>
             </form>
         </div>

@@ -2,7 +2,7 @@
 
 function emptyInputSignup($name, $email, $username, $pwd, $pwdRepeat) {
     $result;
-    if (empty($name) || $empty($email) || $empty($username) || $empty($pwd) || $empty($pwdRepeat)) {
+    if (empty($name) || empty($email) || empty($username) || empty($pwd) || empty($pwdRepeat)) {
         $result = true;
     }
     else {
@@ -13,7 +13,7 @@ function emptyInputSignup($name, $email, $username, $pwd, $pwdRepeat) {
 
 function invalidUid($username) {
     $result;
-    if (preg_match("/^[a-zA-Z0-9]*$/"), $username) {
+    if (!preg_match("/^[a-zA-Z0-9]*$/", $username)) {
         $result = true;
     }
     else {
@@ -47,7 +47,7 @@ function pwdMatch($pwd, $pwdRepeat) {
 function uidExists($conn, $username, $email) {
     $sql = "SELECT * FROM users WHERE usersUid = ? OR usersEmail = ?;";
     $stmt = mysqli_stmt_init($conn);
-    if (!mysql_stmt_prepare($stmt, $sql)){
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ../signup.php?error=stmtfailed");
         exit();
     }
@@ -59,7 +59,7 @@ function uidExists($conn, $username, $email) {
     $resultData = mysqli_stmt_get_result($stmt);
 
     if ($row = mysqli_fetch_assoc($resultData)) {
-        return $row
+        return $row;
     }
     else {
         $result = false;
